@@ -1,38 +1,46 @@
 #include <iostream>
 using namespace std;
 
-int main()
-{
-	int low, high, i, flag;
+void get_primes(int f, int s);
+void get_lcm(int one, int two );
 
-	cout << "Enter two numbers(intervals): ";
-	cin >> low >> high;
+int main() {
+	int first;
+	int second;
 
-	cout << "Prime numbers(First all) and Lowest Common Multiple(Last printed number) between " << low << " and " << high << " are: ";
-	
-	while (low < high)
-	{
-		flag = 0;
+	cout << "Please enter the first number : ";
+	cin >> first;
+	cout << "Please enter the second number : ";
+	cin >> second;
 
-		for (i = 2; i <= low / 2; ++i)
-		{
-			if (low % i == 0)
-			{
-				flag = 1;
-				break;
-			}
-		}
-
-		if (flag == 0)
-			cout << low << " ";
-
-		++low;
-	}
-	for (int i = low; i <= high; i++)
-	{
-		if (i%low == 0 && i%high == 0)
-			std::cout << i << std::endl;
-	}
-
-	return 0;
+	get_primes(first, second);
+	get_lcm(first, second);
 }
+
+void get_primes(int f, int s){
+	for (int i = f; i <= s; i++) {
+		bool prime = true;
+		for (int p = true; p < i; p++) {
+			if (i%p == 0) {
+				prime = false;
+		} 
+		}
+		if (prime) { cout << i << "is prime" << endl; }
+}
+}
+void get_lcm(int one, int two){
+	int one_counter = one;
+	int two_conuter = two;
+
+	while (one != two) {
+		if (one < two) {
+			one += one_counter;
+		}
+		else {
+			two += two_conuter;
+		}
+	}
+
+	cout << "The LCM is : " << two << endl;
+}
+
